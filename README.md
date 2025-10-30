@@ -30,9 +30,11 @@ The first step was to understand the dataset. EDA revealed two key findings:
 2.  **Key Pain Points:** Word clouds generated from negative reviews showed that customer complaints were dominated by terms like "flight," "hour" (referring to delays), "bag," and "service."
 
 ![Sentiment Distribution Chart](sentiments_pie.PNG)
+
 *Caption: The dataset is dominated by negative reviews (60%+), highlighting the need for a robust F1-Score.*
 
 ![Negative Review Word Cloud](wordcloud.PNG)
+
 *Caption: Key drivers for negative sentiment: flight issues, delays (hour), baggage, and customer service.*
 
 ### Text Preprocessing Pipeline
@@ -77,6 +79,7 @@ A critical part of the analysis was validating our results and identifying data 
 **The Anomaly:** An early experiment, which included the `negative_reason` field as a feature, produced an unrealistically high validation accuracy of **0.924**.
 
 ![Data Leakage Result](data_leakage_result.PNG)
+
 *Caption: An unrealistically high accuracy of 0.924 was a clear signal of target data leakage.*
 
 **The Diagnosis:** We identified this as a classic case of **target leakage**. The `negative_reason` field is only populated *after* a "negative" sentiment (our `target`) is already known. It is a result of the target, not a predictor.
@@ -95,11 +98,13 @@ A critical part of the analysis was validating our results and identifying data 
 * **Output Layer:** A Dense layer with `Softmax` activation to output probabilities for the 3 classes (Positive, Neutral, Negative).
 
 ![Final Model Architecture](best_arch.PNG)
+
 *Caption: The final Bi-LSTM model architecture.*
 
 **Performance Comparison:** The Bi-LSTM achieved the highest F1-Score on the validation set, confirming it as the best choice.
 
 ![Model Comparison Chart](comp.PNG)
+
 *Caption: Final comparison of Validation F1-Scores. The GloVe-embedded Bi-LSTM (0.702) outperformed all other models.*
 
 **Final Performance:** When evaluated on the final, independent Test Set, our tuned Bi-LSTM model achieved a powerful **Macro F1-Score of 0.86**.
@@ -108,4 +113,4 @@ A critical part of the analysis was validating our results and identifying data 
 
 ## 5. Project Code
 The complete Python code and analysis are available in the Jupyter Notebook in this repository.
-
+[View the full Jupyter Notebook](./Airline_sentiment_analysis_Code.ipynb)
