@@ -103,11 +103,15 @@ A critical part of the analysis was validating our results and identifying data 
 
 **Performance Comparison:** The Bi-LSTM achieved the highest F1-Score on the validation set, confirming it as the best choice.
 
-![Model Comparison Chart](comp.PNG)
+![Model Comparison Chart](model_comparsion.png)
 
 *Caption: Final comparison of Validation F1-Scores. The GloVe-embedded Bi-LSTM (0.702) outperformed all other models.*
 
 **Final Performance:** When evaluated on the final, independent Test Set, our tuned Bi-LSTM model achieved a powerful **Macro F1-Score of 0.86**.
+
+**Key Finding:** The deep learning models (Bi-LSTM, LSTM) utilizing pre-trained GloVe embeddings decisively outperformed traditional ML baselines (like Random Forest) and simpler RNNs. This confirms that capturing the full context of a review (using bidirectional processing) and word semantics (using GloVe) is critical for accurately classifying sentiment.
+
+**Business Value:** An F1-Score of 0.86 indicates this model is highly reliable for automatically flagging negative customer reviews, allowing customer service teams to prioritize responses and address issues faster.
 
 ---
 
